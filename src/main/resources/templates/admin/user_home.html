@@ -21,47 +21,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-                <h3><span th:utext="${userName}"></span></h3>
-               	
-               	<form th:action="@{/logout}" method="get">
+                <form th:action="@{/logout}" method="get">
 					<button class="btn btn-md btn-danger" name="registration" type="Submit">Logout</button>
 				</form>
-            </div>
-		
-		
-		<div class="row" style="margin-top:20px">
-			<div class="col-md-12">
-				<div>
-					<button type="button" class="btn btn-succes">Tambah User</button>
-				</div>
 				
-			<div class="panel-body">
-					 <table class="table table-bordered">
-					 	<tr>
-					 		<td>Id</td>
-					 		<td>Email</td>
-					 		<td>Name</td>
-					 		<td>Update Date</td>
-					 		<td>Update By</td>
-					 		<td>Action</td>
-					 	</tr>
-					 	<tr>
-					 		<td></td>
-					 		<td></td>
-					 		<td></td>
-					 		<td></td>
-					 		<td></td>
-					 		<td>
-					 			<button type="button" class="btn btn-default">Edit</button>
-					 			<button type="button" class="btn btn-danger">Delete</button>
-					 		</td>
-					 	</tr>
-					 </table>
-				</div> 
-				<p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
-			</div>
-		</div>
-		
+                <h3><span th:utext="${userName}"></span></h3>
+            </div>
+            
+            <div>
+            	<h2 style="text-align : center">Hello User</h2>
+            </div>
 	</div>
 </body>
 </html>

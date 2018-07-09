@@ -11,20 +11,53 @@
 </head>
 
 <body>
-	<div class="container">
-	
-		<form th:action="@{/logout}" method="get">
-			<button class="btn btn-md btn-danger btn-block" name="registration"
-				type="Submit">Logout</button>
-		</form>    
+	<div class="container">		  
 		
-		<div class="panel-group" style="margin-top:40px">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<span th:utext="${userName}"></span>
+		  <div class="panel-group">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <h3><span th:utext="${userName}"></span></h3>
+               	
+               	<form th:action="@{/logout}" method="get">
+					<button class="btn btn-md btn-danger" name="registration" type="Submit">Logout</button>
+				</form>
+            </div>
+		
+		
+		<div class="row" style="margin-top:20px">
+			<div class="col-md-12">
+				<div>
+					<button type="button" class="btn btn-succes">Tambah User</button>
 				</div>
-				<div class="panel-body">
-				</div>
+				
+			<div class="panel-body">
+					 <table class="table table-bordered">
+					 	<tr>
+					 		<td>Id</td>
+					 		<td>Email</td>
+					 		<td>Name</td>
+					 		<td>Update Date</td>
+					 		<td>Update By</td>
+					 		<td>Action</td>
+					 	</tr>
+					 	<tr>
+					 		<td></td>
+					 		<td></td>
+					 		<td></td>
+					 		<td></td>
+					 		<td></td>
+					 		<td>
+					 			<button type="button" class="btn btn-default">Edit</button>
+					 			<button type="button" class="btn btn-danger">Delete</button>
+					 		</td>
+					 	</tr>
+					 </table>
+				</div> 
 				<p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
 			</div>
 		</div>

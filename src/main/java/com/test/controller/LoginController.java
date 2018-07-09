@@ -72,52 +72,16 @@ public class LoginController {
 			role =  authorities.toArray()[i] + "";
 			if(role.equals("ADMIN")){
 				modelAndView.addObject("adminMessage","Halo Admin");
+				modelAndView.setViewName("admin/home");
+				
 			}else{
 				modelAndView.addObject("adminMessage","Halo User");
+				modelAndView.setViewName("admin/user_home");
 			}
 		}
 		User user = userService.findUserByEmail(auth.getName());
 		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-		modelAndView.setViewName("admin/home");
 		return modelAndView;
 	}
-	
-	/*@RequestMapping(value="/admin/home", method = RequestMethod.GET)
-	public ModelAndView home(){
-		ModelAndView modelAndView = new ModelAndView();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByEmail(auth.getName());
-		Set<Role> roles = user.getRoles();
-		String userRole = "";
-		for(Role r:roles)
-		{
-			if(r.getRole().equals("ADMIN")) 
-			{
-				modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-
-			}else if(r.getRole().equals("USER"))
-			{
-				modelAndView.addObject("adminMessage","Content Available Only for Users with User Role");
-
-			}
-		}
-		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-//		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-		modelAndView.setViewName("admin/home");
-		return modelAndView;
-	}*/
-	
-//	@RequestMapping(value="/user/home", method = RequestMethod.GET)
-//	public ModelAndView userHome()
-//	{
-//		ModelAndView modelAndView = new ModelAndView();
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		User user = userService.findUserByEmail(auth.getName());
-//		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-//		modelAndView.addObject("userMessage","Content Available Only for Users with User Role");
-//		modelAndView.setViewName("user/userHome");
-//		return modelAndView;
-//	}
-//	
 
 }
