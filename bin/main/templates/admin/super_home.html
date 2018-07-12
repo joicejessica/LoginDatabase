@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Admin Page</title>
+<title>Super User Page</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -21,40 +21,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-                <h3><span th:utext="${userName}"></span></h3>
-               	
-               	<form th:action="@{/logout}" method="get">
+                <form th:action="@{/logout}" method="get">
 					<button class="btn btn-md btn-danger" name="registration" type="Submit">Logout</button>
 				</form>
 				
-				<br>
- 				<a th:href="@{/admin/create}" href="#" class="btn btn-warning">Add User</a>
- 				
-            </div>			
-				
-			<div class="panel-body">
-					 <table class="table table-bordered">
-					 	<tr>
-					 		<td>Id</td>
-					 		<td>Email</td>
-					 		<td>Name</td>
-					 		<td>Action</td>
-					 	</tr>
-					 	
-					 	<tr th:each="user:${users}">
-					 		<td th:text="${user.id}">1</td>
-					 		<td th:text="${{user.email}}"></td>
-					 		<td th:text="${{user.name}}"></td>
-					 		
-					 		<td>
-                				<a href="#" class="btn btn-default">Edit</a>
-                				<a th:href="${'/delete/' + user.id}" class="btn btn-danger">Delete</a>
-                				<a href="#" class="btn btn-warning">Lihat</a>
-					 		</td>
-					 	</tr>
-					 </table>
-				</div> 
-				<p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
-			</div>
+                <h3><span th:utext="${userName}"></span></h3>
+            </div>
+            
+            <div>
+            	<h2 style="text-align : center">Hello Super User</h2>
+            </div>
+	</div>
 </body>
 </html>
