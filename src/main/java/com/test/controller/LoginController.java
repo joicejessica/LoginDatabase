@@ -23,7 +23,8 @@ import com.test.repository.UserRepository;
 import com.test.service.UserService;
 
 @Controller
-public class LoginController {
+public class LoginController 
+{
 	
 	@Autowired
 	private UserService userService;
@@ -86,6 +87,8 @@ public class LoginController {
 		return modelAndView;
 	}
 	
+	
+
 	/*Delete User*/
 	
 	@RequestMapping(path = "delete/{id}", method = RequestMethod.GET)
@@ -96,14 +99,8 @@ public class LoginController {
 		this.assignUsersToModelView(modelAndView);
 		return modelAndView;
 	}
+
 	
-/*    @RequestMapping(path = "/products/edit/{id}", method = RequestMethod.GET)
-    public String editProduct(Model model, @PathVariable(value = "id") String id) 
-    {
-        model.addAttribute("product", productRepository.findOne(id));
-        return "edit";
-    }
-*/
 	private void assignUsersToModelView(ModelAndView modelAndView ) 
 	{
 		String role = "";
@@ -131,14 +128,33 @@ public class LoginController {
 		User user = userService.findUserByEmail(auth.getName());
 		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
 	}
-	
-	/*Edit User*/
-//	@RequestMapping(path = "/home/edit/{id}", method = RequestMethod.GET)
-//	 public ModelAndView updateUser(@PathVariable(name = "id") Integer userId) 
-//	{
-//	        userService.editUser(userId);
-//	        ModelAndView modelAndView = new ModelAndView();
-//	        modelAndView.setViewName("edit");
-//	        return modelAndView;
-//	}
+
+    @RequestMapping(path = "/admin/edit/{id}", method = RequestMethod.GET)
+    public String editUser(Model model, @PathVariable(value = "id")Integer userId) 
+    {
+    	User user =  userService.findOne(userId);
+        model.addAttribute("user",user);
+        return "admin/edit";
+    }
+    
+    @RequestMapping(path = "/admin/lihat/{id}", method = RequestMethod.GET)
+    public String lihatUser(Model model, @PathVariable(value = "id")Integer userId) 
+    {
+    	User user =  userService.findOne(userId);
+        model.addAttribute("user",user);
+        return "admin/edit";
+    }
+    
+    @RequestMapping(path = "/edit", method = RequestMethod.POST)
+    public ModelAndView saveProduct(User user) 
+    {
+    	User editedUser = userService.findOne(user.getId());
+    	editedUser.setName(user.getName());
+    	editedUser.setEmail(user.getEmail());
+    	editedUser.setName(user.getName());
+    	editedUser.setLastName(user.getLastName());
+        userService.saveSimpleUser(editedUser);
+        return this.home();
+    }
+    
 }

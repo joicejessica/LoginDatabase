@@ -47,9 +47,10 @@
 					 		<td th:text="${{user.name}}"></td>
 					 		
 					 		<td>
-                				<a href="#" class="btn btn-default">Edit</a>
+                				<!-- <a href="#" class="btn btn-default">Edit</a> -->
+               					<a th:href="${'/admin/edit/' + user.id}" class="btn btn-default">Edit</a>
                 				<a th:href="${'/delete/' + user.id}" class="btn btn-danger">Delete</a>
-                				<a href="#" class="btn btn-warning">Lihat</a>
+                				<a th:href="${'/admin/edit/' + user.id}" class="btn btn-warning">Lihat</a>
 					 		</td>
 					 	</tr>
 					 </table>

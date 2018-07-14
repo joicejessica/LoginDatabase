@@ -49,10 +49,16 @@ public class UserServiceImpl implements UserService{
 		userRepository.deleteById(userId);
 	}
 
-/*	@Override
-	public void editUser(int userId) 
-	{
-		userRepository.findOneby(userId);
-	}*/
+	@Override
+	public User findOne(int userId) {
+		return userRepository.findOneById(userId);
+	}
+
+	@Override
+	public void saveSimpleUser(User user) {
+		userRepository.save(user);
+		
+	}
+
 
 }
